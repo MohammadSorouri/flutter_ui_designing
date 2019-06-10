@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_designing/stacked_icons.dart';
+
+import 'login.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,9 +11,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "flutter Ui Designing",
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: "Roboto",
-        primarySwatch: Colors.grey,
+        primarySwatch: Colors.blue,
       ),
       home: MyHomePage(),
     );
@@ -32,50 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Stack(
-              alignment: Alignment.center,
-              children: <Widget>[
-                Container(
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    color: Color(0xff18d191),
-                    borderRadius: BorderRadius.circular(50)
-                  ),
-                  child: Icon(Icons.local_offer,color: Colors.white,),
-                ),
-                Container(
-                  margin: EdgeInsets.only(right: 50,top: 50),
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                      color: Color(0xfffc6a7f),
-                      borderRadius: BorderRadius.circular(50)
-                  ),
-                  child: Icon(Icons.home,color: Colors.white,),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 30,top: 50),
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                      color: Color(0xffffce56),
-                      borderRadius: BorderRadius.circular(50)
-                  ),
-                  child: Icon(Icons.local_car_wash,color: Colors.white,),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 90,top: 40),
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                      color: Color(0xff45e0ec),
-                      borderRadius: BorderRadius.circular(50)
-                  ),
-                  child: Icon(Icons.place,color: Colors.white,),
-                )
-              ],
-            ),
+        StackedIcons(),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -89,16 +50,23 @@ class _MyHomePageState extends State<MyHomePage> {
             Row(
               children: <Widget>[
                 Expanded(
-                  child: Container(
-                    alignment: Alignment.center,
-                    margin: EdgeInsets.only(left: 30,right: 30,top: 10),
-                    height: 60,
-                    decoration: BoxDecoration(
-                        color: Color(0xff18d191),
-                        borderRadius: BorderRadius.circular(10)
-                    ),
-                    child: Text("Sign In With Email",style: TextStyle(fontSize: 20,color: Colors.white),),
-                  ) ,
+                  child:
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder:(context)=> LoginPage()));
+                        },
+                        child: Container(
+                          alignment: Alignment.center,
+                          margin: EdgeInsets.only(left: 30,right: 30,top: 10),
+                          height: 60,
+                          decoration: BoxDecoration(
+                              color: Color(0xff18d191),
+                              borderRadius: BorderRadius.circular(10)
+                          ),
+                          child: Text("Sign In With Email",style: TextStyle(fontSize: 20,color: Colors.white),),
+                        )  ,
+                      ),
+
                 ),
 
               ],
